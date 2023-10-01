@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-  const { singInUser, singInWithGoogle } = useContext(AuthContext);
+  const { singInUser, singInWithGoogle, singInWithGithub } =
+    useContext(AuthContext);
 
   // login korar por default vabe home page ajaber jonno
 
@@ -43,19 +44,29 @@ const Login = () => {
         console.log(error);
       });
   };
+  const handleGithubSingIn = () => {
+    singInWithGithub()
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200 border">
-      <div className="hero-content flex-col border">
-        <div className="text-center border">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+      <div className="hero-content flex-col border bg-blue-200">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold text-b-600">Login now!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 border">
-          <div className="card-body border">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  border bg-blue-100">
+          <div className="card-body">
             <form onSubmit={handleLogin}>
               <div className="form-control border">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-lg font-bold">Email :</span>
                 </label>
                 <input
                   type="email"
@@ -67,7 +78,9 @@ const Login = () => {
               </div>
               <div className="form-control border">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-lg font-bold">
+                    Password :
+                  </span>
                 </label>
                 <input
                   type="password"
@@ -77,26 +90,47 @@ const Login = () => {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a
+                    href="#"
+                    className="label-text-alt link link-hover font-bold"
+                  >
                     Forgot password?
                   </a>
                 </label>
               </div>
               <div className="form-control mt-6 border">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn text-lg font-bold bg-blue-200">
+                  Login
+                </button>
               </div>
             </form>
             <p className="border">
               New to this page ? please{" "}
               <Link to="/register">
-                <button className="btn btn-primary">Register</button>
-              </Link>
-              <p>
-                {" "}
-                <button onClick={handleGoogleSingIn} className="btn btn-ghost">
-                  Google
+                <button className="btn text-lg font-bold bg-blue-200">
+                  Register
                 </button>
-              </p>
+              </Link>
+              <div className="border flex items-center justify-center my-4">
+                <p>
+                  {" "}
+                  <button
+                    onClick={handleGoogleSingIn}
+                    className="btn text-lg font-bold bg-blue-200"
+                  >
+                    Google
+                  </button>
+                </p>
+                <p>
+                  {" "}
+                  <button
+                    onClick={handleGithubSingIn}
+                    className="btn text-lg font-bold bg-blue-200"
+                  >
+                    Github
+                  </button>
+                </p>
+              </div>
             </p>
           </div>
         </div>

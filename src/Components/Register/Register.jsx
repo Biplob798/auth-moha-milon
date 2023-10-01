@@ -25,16 +25,16 @@ const Register = () => {
 
   return (
     <div className="hero min-h-screen bg-base-200 border">
-      <div className="hero-content flex-col border">
-        <div className="text-center border">
-          <h1 className="text-5xl font-bold">Register now!</h1>
+      <div className="hero-content flex-col  border bg-blue-200">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold text-b-600">Register now!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 border">
-          <div className="card-body border">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card-body border bg-blue-100">
             <form onSubmit={handleRegister}>
               <div className="form-control border">
                 <label className="label">
-                  <span className="label-text">Name:</span>
+                  <span className="label-text font-bold">Name :</span>
                 </label>
                 <input
                   type="text"
@@ -46,7 +46,7 @@ const Register = () => {
               </div>
               <div className="form-control border">
                 <label className="label">
-                  <span className="label-text">Email:</span>
+                  <span className="label-text font-bold">Email :</span>
                 </label>
                 <input
                   type="email"
@@ -58,7 +58,7 @@ const Register = () => {
               </div>
               <div className="form-control border">
                 <label className="label">
-                  <span className="label-text">Password:</span>
+                  <span className="label-text font-bold">Password :</span>
                 </label>
                 <input
                   type="password"
@@ -68,19 +68,26 @@ const Register = () => {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a
+                    href="#"
+                    className="label-text-alt link link-hover  font-bold"
+                  >
                     Forgot password?
                   </a>
                 </label>
               </div>
               <div className="form-control mt-6 border">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn text-lg font-bold bg-blue-200">
+                  Register
+                </button>
               </div>
             </form>
             <p className="border">
               Already have a account? please{" "}
               <Link to="/login">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn text-lg font-bold bg-blue-200">
+                  Login
+                </button>
               </Link>
             </p>
           </div>
